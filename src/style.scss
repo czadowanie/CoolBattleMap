@@ -1,0 +1,32 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  background-color: #181818;
+  color: #f0f0f0;
+}
+
+.header {
+  width: 100vw;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  background-color: #222226;
+
+  h1 {
+    text-align: center;
+    margin: 0;
+
+    flex-grow: 0;
+    margin: 1rem;
+  }
+
+  select {
+    flex-grow: 0;
+    margin: 1rem;
+  }
+}
