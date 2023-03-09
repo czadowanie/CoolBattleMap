@@ -1,15 +1,27 @@
-body {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
 
+body {
   background-color: #181818;
   color: #f0f0f0;
+
+  width: 100vw;
+  height: 100vh;
+}
+
+.app {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: start;
+  align-items: stretch;
 }
 
 .header {
-  width: 100vw;
-
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -30,3 +42,28 @@ body {
     margin: 1rem;
   }
 }
+
+.map {
+  flex: 1 1 200px;
+
+  padding: 4rem;
+
+  &__view {
+    position: relative;
+
+    border: 2px solid white;
+    background-color: #333;
+
+    width: 100%;
+    height: 100%;
+
+    overflow-x: scroll;
+    overflow-y: scroll;
+  }
+
+  &__canvas {
+    position: absolute;
+    padding: 2rem;
+  }
+}
+

@@ -1,5 +1,7 @@
 import { createSignal, Switch, Match, For } from "solid-js";
 
+import Map from "./pages/Map"
+
 const Page = {
   menu: "menu",
   map: "map",
@@ -16,7 +18,7 @@ function PageSelector({ setPage }) {
 function App() {
   const [page, setPage] = createSignal(Page.menu)
 
-  return <>
+  return <div class="app">
     <div class="header">
       <h1>strategus </h1>
       <PageSelector setPage={setPage} />
@@ -27,10 +29,10 @@ function App() {
         menu
       </Match>
       <Match when={page() == Page.map}>
-        mapa
+        <Map />
       </Match>
     </Switch>
-  </>
+  </div>
 }
 
 export default App;
