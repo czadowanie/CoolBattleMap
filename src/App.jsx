@@ -1,4 +1,5 @@
 import { createSignal, Switch, Match, For } from "solid-js";
+import Menu from "./pages/Menu"
 
 const Page = {
   menu: "menu",
@@ -24,7 +25,7 @@ function App() {
 
     <Switch fallback={<div>Router: wrong Page id: "{page()}"</div>}>
       <Match when={page() == Page.menu}>
-        menu
+        <Menu />
       </Match>
       <Match when={page() == Page.map}>
         mapa
