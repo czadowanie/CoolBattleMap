@@ -1,13 +1,16 @@
 
 
 function Menu(){
-    //cała strona 
-    <div class="menu">
+    //cała strona menu
+    return <>
+        <div class="menu">
         
-        <input type="button" value="Bitwa - lądowa"></input><br/>
-        <input type="button" value="Bitwa - Morska"></input>
-        
-    </div>
+            <input type="button" value="Bitwa Lądowa"></input><br/>
+            <input type="button" value="Bitwa Morska"></input><br/>
+            <input type="button" value="Sandbox"></input>
+        </div>
+    </>
+    
 }
 
 export default Menu
