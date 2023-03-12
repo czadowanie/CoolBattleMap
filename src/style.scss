@@ -74,9 +74,35 @@ body {
   justify-content: center;
   flex-direction: column;
   background-color: white;
+  
   &__button{
-    padding-top:2em ;
+    margin-top:1em;
+    width: 15rem;
+    height: 4rem;
+    text-align: center;
+    border-radius: 2rem;
+    color: whitesmoke;
+    background-color: #2B2D35;
+    border: 0.25rem solid #0F0E11 ;
+    font-size: 1.5rem;
+    font-family:sans-serif;
     
+    &:hover{
+      box-shadow:0.4rem 0.4rem 0.2rem #CC0000;
+      color: #E00000;
+    }
+    
+    &:active{
+      box-shadow:0.4rem 0.4rem 0.2rem #800000;
+      color: #aa0000;
+      background-color: #1b1d22;
+      border: 0.25rem solid #060607 ;
+      transform: translate(0.2rem, 0.2rem);
+      font-size: 1rem;
+      width: 12rem;
+      height: 3rem;
+    }
   }
 
+  
 }
