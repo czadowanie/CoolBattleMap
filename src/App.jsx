@@ -17,10 +17,17 @@ function PageSelector({ setPage }) {
 
 function App() {
   const [page, setPage] = createSignal(Page.menu)
-
+  //Przy headerze zrobiłem połowiczny layout
+  //Tam gdzie page selector == exit
   return <div class="app">
+    
     <div class="header">
-      <h1>strategus </h1>
+      <h2>Tryb expert</h2>
+      <h2>Custom Units</h2>
+      <h2>Units</h2>
+      <h2>Tu Logo </h2>
+      <h2>Commands</h2>
+      <h2>Upload map</h2>
       <PageSelector setPage={setPage} />
     </div>
 
