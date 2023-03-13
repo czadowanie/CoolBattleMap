@@ -1,6 +1,5 @@
 import { createSignal, Switch, Match, For } from "solid-js";
 import Menu from "./pages/Menu"
-
 import Map from "./pages/Map"
 
 const Page = {
