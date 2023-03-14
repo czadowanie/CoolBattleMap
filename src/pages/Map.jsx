@@ -11,7 +11,7 @@ async function loadImage(url) {
   })
 }
 
-function Map() {
+function Map({}) {
   let canvas = null;
   let viewport = null;
 

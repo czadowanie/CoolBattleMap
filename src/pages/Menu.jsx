@@ -1,4 +1,4 @@
-import { Page } from "../App.jsx"
+import Page from "../Router.jsx"
 
 function Menu({ setPage }) {
   //cała strona menu

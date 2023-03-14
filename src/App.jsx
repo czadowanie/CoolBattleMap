@@ -1,11 +1,7 @@
 import { createSignal, Switch, Match, For } from "solid-js";
 import Menu from "./pages/Menu"
 import Map from "./pages/Map"
-
-export const Page = {
-  menu: "menu",
-  map: "map",
-}
+import Page from "./Router"
 
 function PageSelector({ setPage }) {
   return <select on:change={(e) => { setPage(e.target.value); console.log(e); }}>
@@ -21,13 +17,14 @@ function App() {
   //Tam gdzie page selector == exit
   return <div class="app">
     <div class="header">
-      <h2>Tryb expert</h2>
-      <h2>Custom Units</h2>
-      <h2>Units</h2>
-      <h2>Tu Logo </h2>
-      <h2>Commands</h2>
-      <h2>Upload map</h2>
-      <PageSelector setPage={setPage} />
+      <h2>Tryb expert</h2> {/* checkbox */}
+      <h2>Custom Units</h2> {/* Dropdown + Searchbox + AddUnit */}
+      <h2>Units</h2> {/* Dropdown + Searchbox */}
+      <h2>Tu Logo </h2> {/* img */}
+      <h2>Commands</h2> {/* Dropdown */}
+      <h2>Upload map</h2> {/* input[type="file"] */}
+      <PageSelector setPage={setPage} /> {/* back to menu */}
+      {/* exit button if in fullscreen */}
     </div>
 
     <Switch fallback={<div>Router: wrong Page id: "{page()}"</div>}>
