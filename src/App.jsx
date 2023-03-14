@@ -2,7 +2,7 @@ import { createSignal, Switch, Match, For } from "solid-js";
 import Menu from "./pages/Menu"
 import Map from "./pages/Map"
 
-const Page = {
+export const Page = {
   menu: "menu",
   map: "map",
 }
@@ -20,7 +20,6 @@ function App() {
   //Przy headerze zrobiłem połowiczny layout
   //Tam gdzie page selector == exit
   return <div class="app">
-    
     <div class="header">
       <h2>Tryb expert</h2>
       <h2>Custom Units</h2>
@@ -33,7 +32,7 @@ function App() {
 
     <Switch fallback={<div>Router: wrong Page id: "{page()}"</div>}>
       <Match when={page() == Page.menu}>
-        <Menu />
+        <Menu setPage={setPage} />
       </Match>
       <Match when={page() == Page.map}>
         <Map />

@@ -1,18 +1,20 @@
+import { Page } from "../App.jsx"
 
-function Menu(){
-    //cała strona menu
+function Menu({ setPage }) {
+  //cała strona menu
 
-    return <>
-        
-        <div class="menu">
-        
-            <input class="menu__button" type="button" value="Land battle"></input><br/>
-            <input type="button" class="menu__button" value="Sea battle"></input><br/>
-            <input type="button" class="menu__button" value="Sandbox"></input><br/>
-            <input type="button" class="menu__button" value="Wargame"></input>
+  function goToMap() {
+    setPage(Page.map)
+  }
 
-        </div>
-    </>
+  return <>
+    <div class="menu">
+      <input type="button" class="menu__button" value="Land battle" on:click={goToMap}></input>
+      <input type="button" class="menu__button" value="Sea battle" on:click={goToMap}></input>
+      <input type="button" class="menu__button" value="Sandbox" on:click={goToMap}></input>
+      <input type="button" class="menu__button" value="Wargame" on:click={goToMap}></input>
+    </div>
+  </>
 
 }
 
