@@ -77,7 +77,6 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-color: white;
   
   &__button{
     margin-top:1em;
@@ -107,6 +106,8 @@ body {
       height: 3rem;
     }
   }
+}
 
-  
+button:hover {
+  cursor: pointer
 }

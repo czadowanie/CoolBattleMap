@@ -9,10 +9,10 @@ function Menu({ setPage }) {
 
   return <>
     <div class="menu">
-      <input type="button" class="menu__button" value="Land battle" on:click={goToMap}></input>
-      <input type="button" class="menu__button" value="Sea battle" on:click={goToMap}></input>
-      <input type="button" class="menu__button" value="Sandbox" on:click={goToMap}></input>
-      <input type="button" class="menu__button" value="Wargame" on:click={goToMap}></input>
+      <button class="menu__button" on:click={goToMap}>Land battle</button>
+      <button class="menu__button" on:click={goToMap}>Sea battle</button>
+      <button class="menu__button" on:click={goToMap}>Sandbox</button>
+      <button class="menu__button" on:click={goToMap}>Wargame</button>
     </div>
   </>
 

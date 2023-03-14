@@ -129,7 +129,6 @@ function Map({ }) {
     let frame = requestAnimationFrame(loop);
 
     function loop(t) {
-      frame = requestAnimationFrame(loop);
       ctx.clearRect(0, 0, width(), height())
 
       if (mapImg() == null) {
@@ -149,6 +148,8 @@ function Map({ }) {
         ctx.fillStyle = unit.color
         ctx.fillRect(rect.pos.x, rect.pos.y, rect.size.x, rect.size.y)
       })
+
+      frame = requestAnimationFrame(loop);
     }
 
     onCleanup(() => cancelAnimationFrame(frame));
