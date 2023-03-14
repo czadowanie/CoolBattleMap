@@ -11,7 +11,7 @@ async function loadImage(url) {
   })
 }
 
-function Map({}) {
+function Map({ }) {
   let canvas = null;
   let viewport = null;
 
@@ -51,24 +51,17 @@ function Map({}) {
   const [viewportHeight, setViewportHeight] = createSignal(0);
 
   onMount(() => {
-    const resizeObserver = new ResizeObserver(() => {
+    new ResizeObserver(() => {
       const rect = viewport.getBoundingClientRect()
-
       setViewportWidth(rect.width)
       setViewportHeight(rect.height)
     }).observe(viewport)
-
-    onCleanup(() => {
-      resizeObserver.disconnect()
-    })
   })
 
 
   createEffect(() => {
     canvas.width = scaledWidth();
     canvas.height = scaledHeight();
-
-    console.log(scaledWidth(), scaledHeight(), viewportWidth(), viewportHeight())
 
     if (canvas.width < viewportWidth()) {
       canvas.style.left = `${Math.round((viewportWidth() - canvas.width) / 2.0)}px`
@@ -92,15 +85,12 @@ function Map({}) {
       frame = requestAnimationFrame(loop);
       ctx.clearRect(0, 0, width(), height())
 
-      if (mapImg.loading) {
+      if (mapImg() == null) {
         const r = 128 + Math.floor(Math.sin(t / 1000) * 128)
         const b = + Math.floor(Math.cos(t / 1500) * 128)
         const g = 128 + Math.floor(Math.sin(t / 2000) * 128)
 
         ctx.fillStyle = `rgb(${r}, ${g}, ${b})`
-        ctx.fillRect(0, 0, scaledWidth(), scaledHeight())
-      } else if (mapImg.error) {
-        ctx.fillStyle = `red`
         ctx.fillRect(0, 0, scaledWidth(), scaledHeight())
       } else {
         ctx.drawImage(mapImg(), 0, 0, width(), height(), 0, 0, scaledWidth(), scaledHeight())
