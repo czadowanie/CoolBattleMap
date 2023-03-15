@@ -12,7 +12,7 @@ function App() {
 
       <h2>Custom Units</h2> {/* Dropdown + Searchbox + AddUnit */}
 
-      <h2>Units</h2> {/* Dropdown + Searchbox */}
+      <DropDown/> {/* Dropdown + Searchbox */}
 
       <h2>Tu Logo </h2> {/* img */}
 
