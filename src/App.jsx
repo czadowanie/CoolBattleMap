@@ -2,6 +2,7 @@ import { createSignal, Switch, Match, For } from "solid-js";
 import Menu from "./pages/Menu"
 import Map from "./pages/Map"
 import Page from "./Router"
+import DropDown from "./Dropdown";
 
 function PageSelector({ setPage }) {
   return <select on:change={(e) => { setPage(e.target.value); console.log(e); }}>
@@ -19,7 +20,7 @@ function App() {
     <div class="header">
       <h2>Tryb expert</h2> {/* checkbox */}
       <h2>Custom Units</h2> {/* Dropdown + Searchbox + AddUnit */}
-      <h2>Units</h2> {/* Dropdown + Searchbox */}
+      <DropDown/> {/* Dropdown + Searchbox */}
       <h2>Tu Logo </h2> {/* img */}
       <h2>Commands</h2> {/* Dropdown */}
       <h2>Upload map</h2> {/* input[type="file"] */}
