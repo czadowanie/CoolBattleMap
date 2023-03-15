@@ -77,7 +77,6 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-color: white;
   
   &__button{
     margin-top:1em;
@@ -107,29 +106,8 @@ body {
       height: 3rem;
     }
   }
-
-  
 }
 
-.Dropdown{
-  position: relative;
-  &__dropdown-button{
-    background-color: #E00000;
-    width: 5rem;
-    height: 2rem;
-    text-align: center;
-    font-size: x-large;
-    border: none;
-  }
-  &__dropdown-menu{
-    position: absolute;
-    background-color: #800000;
-    padding: 0.75rem;
-    border-radius: .25rem;
-    box-shadow: 0px 2px 5px 0 black;
-    opacity: 0;
-  }
-  &__dropdown-button:focus + &__dropdown-menu{
-    opacity: 1;
-  }
+button:hover {
+  cursor: pointer
 }

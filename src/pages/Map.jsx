@@ -11,6 +11,60 @@ async function loadImage(url) {
   })
 }
 
+class Vec2 {
+  x;
+  y;
+
+  constructor(x, y) {
+    this.x = x
+    this.y = y
+  }
+
+  muls(rhs) {
+    return new Vec2(this.x * rhs, this.y * rhs)
+  }
+
+  mulv(rhs) {
+    return new Vec2(this.x * rhs.x, this.y * rhs.y)
+  }
+
+  subv(rhs) {
+    return new Vec2(this.x - rhs.x, this.y - rhs.y)
+  }
+
+  divs(rhs) {
+    return new Vec2(this.x / rhs, this.y / rhs)
+  }
+}
+
+class Rect {
+  pos;
+  size;
+
+  constructor(pos, size) {
+    this.pos = pos;
+    this.size = size;
+  }
+}
+
+class Unit {
+  pos;
+  sizeScale;
+  color;
+
+  constructor(pos, sizeScale, color) {
+    this.pos = pos
+    this.sizeScale = sizeScale
+    this.color = color
+  }
+
+  rect(base, scale) {
+    const size = this.sizeScale.muls(base * scale)
+    const pos = this.pos.muls(scale).subv(size.divs(2.0))
+    return new Rect(pos, size)
+  }
+}
+
 function Map({ }) {
   let canvas = null;
   let viewport = null;
@@ -19,21 +73,14 @@ function Map({ }) {
   const [mapImg, setMapImg] = createSignal(null)
   const [width, setWidth] = createSignal(1024)
   const [height, setHeight] = createSignal(1024)
+
   const [scale, setScale] = createSignal(1.0);
+  const [base, setBase] = createSignal(32.0);
 
   const [units, _setUnits] = createSignal([
-    {
-      pos: [300, 200],
-      size: [64, 64],
-    },
-    {
-      pos: [800, 800],
-      size: [64, 64],
-    },
-    {
-      pos: [1400, 600],
-      size: [128, 128],
-    },
+    new Unit(new Vec2(300, 200), new Vec2(1, 1), "#f26"),
+    new Unit(new Vec2(800, 800), new Vec2(2, 1), "#6f2"),
+    new Unit(new Vec2(1400, 600), new Vec2(1, 2), "#62f"),
   ])
 
   createEffect(() => {
@@ -82,7 +129,6 @@ function Map({ }) {
     let frame = requestAnimationFrame(loop);
 
     function loop(t) {
-      frame = requestAnimationFrame(loop);
       ctx.clearRect(0, 0, width(), height())
 
       if (mapImg() == null) {
@@ -97,9 +143,13 @@ function Map({ }) {
       }
 
       units().forEach(unit => {
-        ctx.fillStyle = `red`
-        ctx.fillRect(unit.pos[0] * scale(), unit.pos[1] * scale(), unit.size[0] * scale(), unit.size[1] * scale())
+        const rect = unit.rect(base(), scale())
+
+        ctx.fillStyle = unit.color
+        ctx.fillRect(rect.pos.x, rect.pos.y, rect.size.x, rect.size.y)
       })
+
+      frame = requestAnimationFrame(loop);
     }
 
     onCleanup(() => cancelAnimationFrame(frame));
@@ -112,6 +162,9 @@ function Map({ }) {
       </div>
       <input type="range" min="0.1" max="2.0" step="0.01" value="1.0" on:change={(e) => {
         setScale(e.target.value)
+      }} />
+      <input type="range" min="16" max="128" step="8" value="32" on:change={(e) => {
+        setBase(e.target.value)
       }} />
     </div>
   </>
